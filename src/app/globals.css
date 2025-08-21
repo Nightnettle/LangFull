@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Northern Lights Theme - Light Mode */
+  --color-background: oklch(0.9824 0.0013 286.3757);
+  --color-foreground: oklch(0.3211 0 0);
+  --color-card: oklch(1.0000 0 0);
+  --color-card-foreground: oklch(0.3211 0 0);
+  --color-popover: oklch(1.0000 0 0);
+  --color-popover-foreground: oklch(0.3211 0 0);
+  --color-primary: oklch(0.6487 0.1538 150.3071);
+  --color-primary-foreground: oklch(1.0000 0 0);
+  --color-secondary: oklch(0.6746 0.1414 261.3380);
+  --color-secondary-foreground: oklch(1.0000 0 0);
+  --color-muted: oklch(0.8828 0.0285 98.1033);
+  --color-muted-foreground: oklch(0.5382 0 0);
+  --color-accent: oklch(0.8269 0.1080 211.9627);
+  --color-accent-foreground: oklch(0.3211 0 0);
+  --color-destructive: oklch(0.6368 0.2078 25.3313);
+  --color-destructive-foreground: oklch(1.0000 0 0);
+  --color-border: oklch(0.8699 0 0);
+  --color-input: oklch(0.8699 0 0);
+  --color-ring: oklch(0.6487 0.1538 150.3071);
+  --radius: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  @theme {
+    /* Northern Lights Theme - Dark Mode */
+    --color-background: oklch(0.2303 0.0125 264.2926);
+    --color-foreground: oklch(0.9219 0 0);
+    --color-card: oklch(0.3210 0.0078 223.6661);
+    --color-card-foreground: oklch(0.9219 0 0);
+    --color-popover: oklch(0.3210 0.0078 223.6661);
+    --color-popover-foreground: oklch(0.9219 0 0);
+    --color-primary: oklch(0.6487 0.1538 150.3071);
+    --color-primary-foreground: oklch(1.0000 0 0);
+    --color-secondary: oklch(0.5880 0.0993 245.7394);
+    --color-secondary-foreground: oklch(0.9219 0 0);
+    --color-muted: oklch(0.3867 0 0);
+    --color-muted-foreground: oklch(0.7155 0 0);
+    --color-accent: oklch(0.6746 0.1414 261.3380);
+    --color-accent-foreground: oklch(0.9219 0 0);
+    --color-destructive: oklch(0.6368 0.2078 25.3313);
+    --color-destructive-foreground: oklch(1.0000 0 0);
+    --color-border: oklch(0.3867 0 0);
+    --color-input: oklch(0.3867 0 0);
+    --color-ring: oklch(0.6487 0.1538 150.3071);
+  }
+
+  :root {
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --popover: var(--color-popover);
+    --popover-foreground: var(--color-popover-foreground);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-foreground);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-foreground);
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-destructive-foreground);
+    --border: var(--color-border);
+    --input: var(--color-input);
+    --ring: var(--color-ring);
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--color-border));
+  }
+  body {
+    background-color: hsl(var(--color-background));
+    color: hsl(var(--color-foreground));
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  /* Map custom colors to standard names for compatibility */
+  :root {
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --popover: var(--color-popover);
+    --popover-foreground: var(--color-popover-foreground);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-foreground);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-foreground);
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-destructive-foreground);
+    --border: var(--color-border);
+    --input: var(--color-input);
+    --ring: var(--color-ring);
+  }
+}
+
+@theme inline {
+  --animate-shine: shine var(--duration) infinite linear;
+  @keyframes shine {
+  0% {
+    background-position: 0% 0%;
+    }
+  50% {
+    background-position: 100% 100%;
+    }
+  to {
+    background-position: 0% 0%;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
